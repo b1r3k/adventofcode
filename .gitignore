@@ -1,0 +1,45 @@
+*~
+/dump/
+bin
+parts
+coverage
+eggs
+sources
+dist
+venv
+build
+.installed.cfg
+develop-eggs
+var/*
+*.egg-info
+*.pyc
+*.pyo
+*.bak
+*.egg
+*.tar.gz
+*.so
+.tox
+.DS_Store
+.coverage
+.noseids
+docs/_build/
+nosetests.xml
+etc/local*
+.mypy_cache/
+.eggs/
+
+# Intellij files
+.idea/
+*.iml
+
+# Sublime files
+*.sublime-project
+*.sublime-workspace
+
+# VSCode
+.vscode
+
+doc
+node_modules
+coverage.xml
+temp/
