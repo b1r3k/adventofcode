@@ -2,6 +2,7 @@
 set -e
 
 YEAR=$(date +%Y)
+COOKIE_PATH="cookies.txt"
 
 for DAY in {1..25}
 do
@@ -39,18 +40,18 @@ do
         fi
         if [ ! -f ${YEAR}/${PUZZLE_DIR_NAME}/${FILENAME}_2.${EXTENSION} ]
         then
-            echo "\tCreating ${FILENAME}_2.${EXTENSION}"
+            echo -e "\tCreating ${FILENAME}_2.${EXTENSION}"
             cp $FILE ${YEAR}/${PUZZLE_DIR_NAME}/${FILENAME}_2.${EXTENSION}
         fi
     done
-    if [ ! -f ${YEAR}/${PUZZLE_DIR_NAME}/input.txt ]
+    if [ ! -f ${YEAR}/${PUZZLE_DIR_NAME}/input.txt ] && [ -f ${COOKIE_PATH} ]
     then
-        echo "\tCreating input for day ${DAY}"
-        touch ${YEAR}/${PUZZLE_DIR_NAME}/input.txt
+        echo -e "\tCreating input for day ${DAY}"
+        curl --silent --cookie ${COOKIE_PATH} -o ${YEAR}/${PUZZLE_DIR_NAME}/input.txt "https://adventofcode.com/${YEAR}/day/${DAY}/input"
     fi
     if [ ! -f ${YEAR}/${PUZZLE_DIR_NAME}/test_input.txt ]
     then
-        echo "\tCreating test input for day ${DAY}"
+        echo -e "\tCreating test input for day ${DAY}"
         touch ${YEAR}/${PUZZLE_DIR_NAME}/test_input.txt
     fi
 done
